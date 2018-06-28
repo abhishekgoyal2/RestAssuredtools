@@ -15,12 +15,17 @@ public class Getreveltest {
 	public void getrevelupdetails()
 	{
 		
-//		Response res =RestAssured.get("https://testkohls.revelup.com/resources/Product/?barcode=490905000043&establishment=1");
-		Response res =RestAssured.get("http://nwc00619.cp.ad.kohls.com/KohlsDB2ProviderService/OffAisleProviderService.svc?singleWsdl");
+		Response res =RestAssured.get("https://testkohls.revelup.com/resources/Product/?barcode=490905000043&establishment=1");
+//		given().auth().basic("username", "password")
+//		RestAssured.authentication = basic("sai.kamal@kohls.com", "Password4)");
+//		Response res =RestAssured.get("http://10.3.28.6/KohlsDB2ProviderService/OffAisleProviderService.svc");
 		int code=res.getStatusCode();
 		
 		System.out.println("status code is " +code);
 		Assert.assertEquals(code /*actual code*/, 200 /*expected code*/," status code returned");
+		
+		String responseBody =res.getBody().asString();
+		System.out.println("Response Body is =>  " + responseBody);
 //		// Specify the base URL to the RESTful web service
 //		RestAssured.baseURI="https://testkohls.revelup.com//resources/Product/?barcode/?establishment";
 //		
